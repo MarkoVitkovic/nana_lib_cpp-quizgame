@@ -10,35 +10,38 @@ int main()
 	using namespace nana;
 	//Define a form.
 	form fm;
-	form sec;
-	form thrid;
+	form questionOne;
+	form questionTwo;
 
 	//Forms size
 	nana::API::track_window_size(fm, { 500,350 }, false); //minimum
 	nana::API::track_window_size(fm, { 500,350 }, true); //maximum
-	nana::API::track_window_size(sec, { 700,450 }, false); //minimum
-	nana::API::track_window_size(sec, { 700,450 }, true); //maximum
+	nana::API::track_window_size(questionOne, { 700,450 }, false); //minimum
+	nana::API::track_window_size(questionOne, { 700,450 }, true); //maximum
 	fm.caption("Trivia Night");
+	questionOne.caption("Trivia Night");
 	
 
 	//Define a label and display a text.
-	label question{ sec, "<bold size=30>Tko je Rus?</>" };
-	API::effects_bground(question, effects::bground_transparent(0), 0);
-	question.text_align(align::center);
-	question.format(true);
+	label question1{ questionOne, nana::rectangle(155, 100, 400 , 100) };
+	question1.fgcolor(colors::white);
+	API::effects_bground(question1, effects::bground_transparent(0), 0);
+	question1.text_align(align::center);
+	question1.format(true);
+	question1.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
 	
 
 	//Define a msgbox
-	msgbox m(sec, "Wrong answer", msgbox::ok);
+	msgbox m(questionOne, "Wrong answer", msgbox::ok);
 	m << "Wrong answer, try again.";
-	msgbox mc(sec, "Correct answer", msgbox::ok);
+	msgbox mc(questionOne, "Correct answer", msgbox::ok);
 	mc << "Correct answer, nice!";
 
 
 	//Define a button and answer the click event(main form).
 	button btn{ fm, nana::rectangle(130, 270, 100 , 30) };
-	btn.events().click([&sec, &fm] {
-		sec.show();
+	btn.events().click([&questionOne, &fm] {
+		questionOne.show();
 	});
 	btn.caption("Start"); 
 	API::effects_bground(btn, effects::bground_transparent(0), 0);
@@ -53,43 +56,44 @@ int main()
 	btn2.fgcolor(colors::white);
 
 
-	//Define a button on second form
-	button q1{ sec, "Covjek" };
-	q1.events().click([&sec, &thrid, &mc] {
-		mc.show();
-		thrid.show();
-		sec.close();
+	//Define a button on questionOne form
+	button q1a1{ questionOne, nana::rectangle(145, 270, 200 , 40) };
+	q1a1.events().click([&questionOne, &fm] {
+		questionOne.show();
 	});
-	button q2{ sec, "Medo" };
-	q2.events().click([&sec, &m] {
-		m.show();
-	});
-	button q3{ sec, "Konj" };
-	q3.events().click([&sec, &m, &fm] {
-		m.show();
-	});
-	button q4{ sec, "Zmaj" };
-	q4.events().click([&sec, &m] {
-		m.show();
-	});
-	button quit{ sec, "Quit game" };
-	quit.events().click([&sec] {
-		sec.close();
-	});
+	q1a1.caption("Rus");
+	API::effects_bground(q1a1, effects::bground_transparent(0), 0);
+	q1a1.fgcolor(colors::white);
 
-	//Layout management
-	sec.div("vert <><<><weight=100% text><>><><weight=30<><button><>><>");
-	sec["text"] << question;
-	sec["button"] << q1 << q2;
-	sec["button"] << q3 << q4;
-	sec["button"] << quit;
-	sec.collocate();
+	button q1a2{ questionOne, nana::rectangle(365, 270, 200 , 40) };
+	q1a2.events().click([&questionOne, &fm] {
+		questionOne.show();
+	});
+	q1a2.caption("Rus");
+	API::effects_bground(q1a2, effects::bground_transparent(0), 0);
+	q1a2.fgcolor(colors::white);
 
+	button q1a3{ questionOne, nana::rectangle(145, 330, 200 , 40) };
+	q1a3.events().click([&questionOne, &fm] {
+		questionOne.show();
+	});
+	q1a3.caption("Rus");
+	API::effects_bground(q1a3, effects::bground_transparent(0), 0);
+	q1a3.fgcolor(colors::white);
 
+	button q1a4{ questionOne, nana::rectangle(365, 330, 200 , 40) };
+	q1a4.events().click([&questionOne, &fm] {
+		questionOne.show();
+	});
+	q1a4.caption("Rus");
+	API::effects_bground(q1a4, effects::bground_transparent(0), 0);
+	q1a4.fgcolor(colors::white);
 	
+
 	//Show the form
 	fm.show();
 
+	//Backgrounds
 	nana::paint::image mainImg("C:\\Users\\Korisnik\\source\\repos\\QuizGame\\QuizGame\\firstpage.jpg");
 	drawing dw(fm);
 	dw.draw([&mainImg](nana::paint::graphics & graph)
@@ -100,7 +104,7 @@ int main()
 	dw.update();
 
 	nana::paint::image Img("C:\\Users\\Korisnik\\source\\repos\\QuizGame\\QuizGame\\Question.jpg");
-	drawing dw1(sec);
+	drawing dw1(questionOne);
 	dw1.draw([&Img](nana::paint::graphics & graph)
 	{
 		if (Img.empty()) return;
