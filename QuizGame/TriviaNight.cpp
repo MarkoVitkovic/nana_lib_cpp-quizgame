@@ -207,18 +207,18 @@ int main()
 
 	//Define a button on questionTwo form
 	button q2a1{ questionTwo, nana::rectangle(145, 270, 200 , 40) };
-	q2a1.events().click([&questionTwo, &correct, &questionThree] {
-		correct.show();
-		questionThree.show();
-		questionTwo.close();
+	q2a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q2a1.caption(QUESTION_TWO_ANSWER_ONE);
 	API::effects_bground(q2a1, effects::bground_transparent(0), 0);
 	q2a1.fgcolor(colors::white);
 
 	button q2a2{ questionTwo, nana::rectangle(365, 270, 200 , 40) };
-	q2a2.events().click([&wrong] {
-		wrong.show();
+	q2a2.events().click([&questionTwo, &correct, &questionThree] {
+		correct.show();
+		questionThree.show();
+		questionTwo.close();
 	});
 	q2a2.caption(QUESTION_TWO_ANSWER_TWO);
 	API::effects_bground(q2a2, effects::bground_transparent(0), 0);
@@ -233,7 +233,7 @@ int main()
 	q2a3.fgcolor(colors::white);
 
 	button q2a4{ questionTwo, nana::rectangle(365, 330, 200 , 40) };
-	q1a4.events().click([&wrong] {
+	q2a4.events().click([&wrong] {
 		wrong.show();
 	});
 	q2a4.caption(QUESTION_TWO_ANSWER_FOUR);
@@ -242,10 +242,8 @@ int main()
 
 	//Define a button on questionThree form
 	button q3a1{ questionThree, nana::rectangle(145, 270, 200 , 40) };
-	q3a1.events().click([&questionThree, &correct, &questionFour] {
-		correct.show();
-		questionFour.show();
-		questionThree.close();
+	q3a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q3a1.caption(QUESTION_THREE_ANSWER_ONE);
 	API::effects_bground(q3a1, effects::bground_transparent(0), 0);
@@ -260,8 +258,10 @@ int main()
 	q3a2.fgcolor(colors::white);
 
 	button q3a3{ questionThree, nana::rectangle(145, 330, 200 , 40) };
-	q3a3.events().click([&wrong] {
-		wrong.show();
+	q3a3.events().click([&questionThree, &correct, &questionFour] {
+		correct.show();
+		questionFour.show();
+		questionThree.close();
 	});
 	q3a3.caption(QUESTION_THREE_ANSWER_THREE);
 	API::effects_bground(q3a3, effects::bground_transparent(0), 0);
@@ -277,18 +277,18 @@ int main()
 	
 	//Define a button on questionFour form
 	button q4a1{ questionFour, nana::rectangle(145, 270, 200 , 40) };
-	q4a1.events().click([&questionFive, &correct, &questionFour] {
-		correct.show();
-		questionFive.show();
-		questionFour.close();
+	q4a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q4a1.caption(QUESTION_FOUR_ANSWER_ONE);
 	API::effects_bground(q4a1, effects::bground_transparent(0), 0);
 	q4a1.fgcolor(colors::white);
 
 	button q4a2{ questionFour, nana::rectangle(365, 270, 200 , 40) };
-	q4a2.events().click([&wrong] {
-		wrong.show();
+	q4a2.events().click([&questionFive, &correct, &questionFour] {
+		correct.show();
+		questionFive.show();
+		questionFour.close();
 	});
 	q4a2.caption(QUESTION_FOUR_ANSWER_TWO);
 	API::effects_bground(q4a2, effects::bground_transparent(0), 0);
@@ -348,10 +348,8 @@ int main()
 
 	//Define a button on questionSix form
 	button q6a1{ questionSix, nana::rectangle(145, 270, 200 , 40) };
-	q6a1.events().click([&questionSeven, &correct, &questionSix] {
-		correct.show();
-		questionSeven.show();
-		questionSix.close();
+	q6a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q6a1.caption(QUESTION_SIX_ANSWER_ONE);
 	API::effects_bground(q6a1, effects::bground_transparent(0), 0);
@@ -374,8 +372,10 @@ int main()
 	q6a3.fgcolor(colors::white);
 
 	button q6a4{ questionSix, nana::rectangle(365, 330, 200 , 40) };
-	q6a4.events().click([&wrong] {
-		wrong.show();
+	q6a4.events().click([&questionSeven, &correct, &questionSix] {
+		correct.show();
+		questionSeven.show();
+		questionSix.close();
 	});
 	q6a4.caption(QUESTION_SIX_ANSWER_FOUR);
 	API::effects_bground(q6a4, effects::bground_transparent(0), 0);
@@ -384,10 +384,8 @@ int main()
 
 	//Define a button on questionSeven form
 	button q7a1{ questionSeven, nana::rectangle(145, 270, 200 , 40) };
-	q7a1.events().click([&questionSeven, &correct, &questionEight] {
-		correct.show();
-		questionEight.show();
-		questionSeven.close();
+	q7a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q7a1.caption(QUESTION_SEVEN_ANSWER_ONE);
 	API::effects_bground(q7a1, effects::bground_transparent(0), 0);
@@ -410,8 +408,10 @@ int main()
 	q7a3.fgcolor(colors::white);
 
 	button q7a4{ questionSeven, nana::rectangle(365, 330, 200 , 40) };
-	q7a4.events().click([&wrong] {
-		wrong.show();
+	q7a4.events().click([&questionSeven, &correct, &questionEight] {
+		correct.show();
+		questionEight.show();
+		questionSeven.close();
 	});
 	q7a4.caption(QUESTION_SEVEN_ANSWER_FOUR);
 	API::effects_bground(q7a4, effects::bground_transparent(0), 0);
@@ -419,18 +419,18 @@ int main()
 
 	//Define a button on questionEight form
 	button q8a1{ questionEight, nana::rectangle(145, 270, 200 , 40) };
-	q8a1.events().click([&questionEight, &correct, &questionNine] {
-		correct.show();
-		questionNine.show();
-		questionEight.close();
+	q8a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q8a1.caption(QUESTION_EIGHT_ANSWER_ONE);
 	API::effects_bground(q8a1, effects::bground_transparent(0), 0);
 	q8a1.fgcolor(colors::white);
 
 	button q8a2{ questionEight, nana::rectangle(365, 270, 200 , 40) };
-	q8a2.events().click([&wrong] {
-		wrong.show();
+	q8a2.events().click([&questionEight, &correct, &questionNine] {
+		correct.show();
+		questionNine.show();
+		questionEight.close();
 	});
 	q8a2.caption(QUESTION_EIGHT_ANSWER_TWO);
 	API::effects_bground(q8a2, effects::bground_transparent(0), 0);
@@ -455,10 +455,8 @@ int main()
 
 	//Define a button on questionNine form
 	button q9a1{ questionNine, nana::rectangle(145, 270, 200 , 40) };
-	q9a1.events().click([&questionNine, &correct, &questionTen] {
-		correct.show();
-		questionTen.show();
-		questionNine.close();
+	q9a1.events().click([&wrong] {
+		wrong.show();
 	});
 	q9a1.caption(QUESTION_NINE_ANSWER_ONE);
 	API::effects_bground(q9a1, effects::bground_transparent(0), 0);
@@ -473,8 +471,10 @@ int main()
 	q9a2.fgcolor(colors::white);
 
 	button q9a3{ questionNine, nana::rectangle(145, 330, 200 , 40) };
-	q9a3.events().click([&wrong] {
-		wrong.show();
+	q9a3.events().click([&questionNine, &correct, &questionTen] {
+		correct.show();
+		questionTen.show();
+		questionNine.close();
 	});
 	q9a3.caption(QUESTION_NINE_ANSWER_THREE);
 	API::effects_bground(q9a3, effects::bground_transparent(0), 0);
