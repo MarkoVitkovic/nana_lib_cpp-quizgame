@@ -5,7 +5,6 @@
 #include <nana/gui/msgbox.hpp>
 #include <nana/gui/place.hpp>
 #include "Resource.h"
-#include <nana/audio/player.hpp>
 
 
 int main()
@@ -75,7 +74,7 @@ int main()
 	API::effects_bground(question2, effects::bground_transparent(0), 0);
 	question2.text_align(align::center);
 	question2.format(true);
-	question2.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question2.caption(QUESTION_TWO);
 
 	//Question Three
 	label question3{ questionThree, nana::rectangle(155, 100, 400 , 100) };
@@ -83,7 +82,7 @@ int main()
 	API::effects_bground(question3, effects::bground_transparent(0), 0);
 	question3.text_align(align::center);
 	question3.format(true);
-	question3.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question3.caption(QUESTION_THREE);
 
 	//Question Four
 	label question4{ questionFour, nana::rectangle(155, 100, 400 , 100) };
@@ -91,7 +90,7 @@ int main()
 	API::effects_bground(question4, effects::bground_transparent(0), 0);
 	question4.text_align(align::center);
 	question4.format(true);
-	question4.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question4.caption(QUESTION_FOUR);
 
 	//Question Five
 	label question5{ questionFive, nana::rectangle(155, 100, 400 , 100) };
@@ -99,7 +98,7 @@ int main()
 	API::effects_bground(question5, effects::bground_transparent(0), 0);
 	question5.text_align(align::center);
 	question5.format(true);
-	question5.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question5.caption(QUESTION_FIVE);
 
 	//Question Six
 	label question6{ questionSix, nana::rectangle(155, 100, 400 , 100) };
@@ -107,7 +106,7 @@ int main()
 	API::effects_bground(question6, effects::bground_transparent(0), 0);
 	question6.text_align(align::center);
 	question6.format(true);
-	question6.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question6.caption(QUESTION_SIX);
 
 	//Question Seven
 	label question7{ questionSeven, nana::rectangle(155, 100, 400 , 100) };
@@ -115,7 +114,7 @@ int main()
 	API::effects_bground(question7, effects::bground_transparent(0), 0);
 	question7.text_align(align::center);
 	question7.format(true);
-	question7.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question7.caption(QUESTION_SEVEN);
 
 	//Question Eight
 	label question8{ questionEight, nana::rectangle(155, 100, 400 , 100) };
@@ -123,7 +122,7 @@ int main()
 	API::effects_bground(question8, effects::bground_transparent(0), 0);
 	question8.text_align(align::center);
 	question8.format(true);
-	question8.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question8.caption(QUESTION_EIGHT);
 
 	//Question Nine
 	label question9{ questionNine, nana::rectangle(155, 100, 400 , 100) };
@@ -131,7 +130,7 @@ int main()
 	API::effects_bground(question9, effects::bground_transparent(0), 0);
 	question9.text_align(align::center);
 	question9.format(true);
-	question9.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question9.caption(QUESTION_NINE);
 
 	//Question Ten
 	label question10{ questionTen, nana::rectangle(155, 100, 400 , 100) };
@@ -139,16 +138,16 @@ int main()
 	API::effects_bground(question10, effects::bground_transparent(0), 0);
 	question10.text_align(align::center);
 	question10.format(true);
-	question10.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question10.caption(QUESTION_TEN);
 	
 
 	//Define a msgbox
-	nana::msgbox correct{ "Correct answer" };
-	correct << "Correct answer, nice!";
-	nana::msgbox wrong{ "Wrong answer" };
-	wrong << "Wrong answer, try again.";
-	nana::msgbox win{ "WIN!!!!" };
-	win << "Congratulations, you WIN the game.";
+	nana::msgbox correct{ MSGBOX_CORRECT_TITLE };
+	correct << MSGBOX_CORRECT;
+	nana::msgbox wrong{ MSGBOX_WRONG_TITLE };
+	wrong << MSGBOX_WRONG;
+	nana::msgbox win{ MSGBOX_WIN_TITLE };
+	win << MSGBOX_WIN;
 
 
 
@@ -158,7 +157,7 @@ int main()
 	btn.events().click([&questionOne, &fm] {
 		questionOne.show();
 	});
-	btn.caption("Start"); 
+	btn.caption(START); 
 	API::effects_bground(btn, effects::bground_transparent(0), 0);
 	btn.fgcolor(colors::white);
 
@@ -166,7 +165,7 @@ int main()
 	btn2.events().click([&fm] {
 		fm.close();
 	});
-	btn2.caption("Quit");
+	btn2.caption(QUIT);
 	API::effects_bground(btn2, effects::bground_transparent(0), 0);
 	btn2.fgcolor(colors::white);
 
@@ -178,7 +177,7 @@ int main()
 		questionTwo.show();
 		questionOne.close();
 	});
-	q1a1.caption("Man");
+	q1a1.caption(QUESTION_ONE_ANSWER_ONE);
 	API::effects_bground(q1a1, effects::bground_transparent(0), 0);
 	q1a1.fgcolor(colors::white);
 
@@ -186,7 +185,7 @@ int main()
 	q1a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q1a2.caption("Rus");
+	q1a2.caption(QUESTION_ONE_ANSWER_TWO);
 	API::effects_bground(q1a2, effects::bground_transparent(0), 0);
 	q1a2.fgcolor(colors::white);
 
@@ -194,7 +193,7 @@ int main()
 	q1a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q1a3.caption("Rus");
+	q1a3.caption(QUESTION_ONE_ANSWER_THREE);
 	API::effects_bground(q1a3, effects::bground_transparent(0), 0);
 	q1a3.fgcolor(colors::white);
 
@@ -202,7 +201,7 @@ int main()
 	q1a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q1a4.caption("Rus");
+	q1a4.caption(QUESTION_ONE_ANSWER_FOUR);
 	API::effects_bground(q1a4, effects::bground_transparent(0), 0);
 	q1a4.fgcolor(colors::white);
 
@@ -213,7 +212,7 @@ int main()
 		questionThree.show();
 		questionTwo.close();
 	});
-	q2a1.caption("Man");
+	q2a1.caption(QUESTION_TWO_ANSWER_ONE);
 	API::effects_bground(q2a1, effects::bground_transparent(0), 0);
 	q2a1.fgcolor(colors::white);
 
@@ -221,7 +220,7 @@ int main()
 	q2a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q2a2.caption("Rus");
+	q2a2.caption(QUESTION_TWO_ANSWER_TWO);
 	API::effects_bground(q2a2, effects::bground_transparent(0), 0);
 	q2a2.fgcolor(colors::white);
 
@@ -229,7 +228,7 @@ int main()
 	q2a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q2a3.caption("Rus");
+	q2a3.caption(QUESTION_TWO_ANSWER_THREE);
 	API::effects_bground(q2a3, effects::bground_transparent(0), 0);
 	q2a3.fgcolor(colors::white);
 
@@ -237,7 +236,7 @@ int main()
 	q1a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q2a4.caption("Rus");
+	q2a4.caption(QUESTION_TWO_ANSWER_FOUR);
 	API::effects_bground(q2a4, effects::bground_transparent(0), 0);
 	q2a4.fgcolor(colors::white);
 
@@ -248,7 +247,7 @@ int main()
 		questionFour.show();
 		questionThree.close();
 	});
-	q3a1.caption("Man");
+	q3a1.caption(QUESTION_THREE_ANSWER_ONE);
 	API::effects_bground(q3a1, effects::bground_transparent(0), 0);
 	q3a1.fgcolor(colors::white);
 
@@ -256,7 +255,7 @@ int main()
 	q3a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q3a2.caption("Rus");
+	q3a2.caption(QUESTION_THREE_ANSWER_TWO);
 	API::effects_bground(q3a2, effects::bground_transparent(0), 0);
 	q3a2.fgcolor(colors::white);
 
@@ -264,7 +263,7 @@ int main()
 	q3a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q3a3.caption("Rus");
+	q3a3.caption(QUESTION_THREE_ANSWER_THREE);
 	API::effects_bground(q3a3, effects::bground_transparent(0), 0);
 	q3a3.fgcolor(colors::white);
 
@@ -272,7 +271,7 @@ int main()
 	q3a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q3a4.caption("Rus");
+	q3a4.caption(QUESTION_THREE_ANSWER_FOUR);
 	API::effects_bground(q3a4, effects::bground_transparent(0), 0);
 	q3a4.fgcolor(colors::white);
 	
@@ -283,7 +282,7 @@ int main()
 		questionFive.show();
 		questionFour.close();
 	});
-	q4a1.caption("Man");
+	q4a1.caption(QUESTION_FOUR_ANSWER_ONE);
 	API::effects_bground(q4a1, effects::bground_transparent(0), 0);
 	q4a1.fgcolor(colors::white);
 
@@ -291,7 +290,7 @@ int main()
 	q4a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q4a2.caption("Rus");
+	q4a2.caption(QUESTION_FOUR_ANSWER_TWO);
 	API::effects_bground(q4a2, effects::bground_transparent(0), 0);
 	q4a2.fgcolor(colors::white);
 
@@ -299,7 +298,7 @@ int main()
 	q4a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q4a3.caption("Rus");
+	q4a3.caption(QUESTION_FOUR_ANSWER_THREE);
 	API::effects_bground(q4a3, effects::bground_transparent(0), 0);
 	q4a3.fgcolor(colors::white);
 
@@ -307,7 +306,7 @@ int main()
 	q4a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q4a4.caption("Rus");
+	q4a4.caption(QUESTION_FOUR_ANSWER_FOUR);
 	API::effects_bground(q4a4, effects::bground_transparent(0), 0);
 	q4a4.fgcolor(colors::white);
 
@@ -318,7 +317,7 @@ int main()
 		questionSix.show();
 		questionFive.close();
 	});
-	q5a1.caption("Man");
+	q5a1.caption(QUESTION_FIVE_ANSWER_ONE);
 	API::effects_bground(q5a1, effects::bground_transparent(0), 0);
 	q5a1.fgcolor(colors::white);
 
@@ -326,7 +325,7 @@ int main()
 	q5a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q5a2.caption("Rus");
+	q5a2.caption(QUESTION_FIVE_ANSWER_TWO);
 	API::effects_bground(q5a2, effects::bground_transparent(0), 0);
 	q5a2.fgcolor(colors::white);
 
@@ -334,7 +333,7 @@ int main()
 	q5a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q5a3.caption("Rus");
+	q5a3.caption(QUESTION_FIVE_ANSWER_THREE);
 	API::effects_bground(q5a3, effects::bground_transparent(0), 0);
 	q5a3.fgcolor(colors::white);
 
@@ -342,7 +341,7 @@ int main()
 	q5a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q5a4.caption("Rus");
+	q5a4.caption(QUESTION_FIVE_ANSWER_FOUR);
 	API::effects_bground(q5a4, effects::bground_transparent(0), 0);
 	q5a4.fgcolor(colors::white);
 
@@ -354,7 +353,7 @@ int main()
 		questionSeven.show();
 		questionSix.close();
 	});
-	q6a1.caption("Man");
+	q6a1.caption(QUESTION_SIX_ANSWER_ONE);
 	API::effects_bground(q6a1, effects::bground_transparent(0), 0);
 	q6a1.fgcolor(colors::white);
 
@@ -362,7 +361,7 @@ int main()
 	q6a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q6a2.caption("Rus");
+	q6a2.caption(QUESTION_SIX_ANSWER_TWO);
 	API::effects_bground(q6a2, effects::bground_transparent(0), 0);
 	q6a2.fgcolor(colors::white);
 
@@ -370,7 +369,7 @@ int main()
 	q6a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q6a3.caption("Rus");
+	q6a3.caption(QUESTION_SIX_ANSWER_THREE);
 	API::effects_bground(q6a3, effects::bground_transparent(0), 0);
 	q6a3.fgcolor(colors::white);
 
@@ -378,7 +377,7 @@ int main()
 	q6a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q6a4.caption("Rus");
+	q6a4.caption(QUESTION_SIX_ANSWER_FOUR);
 	API::effects_bground(q6a4, effects::bground_transparent(0), 0);
 	q6a4.fgcolor(colors::white);
 
@@ -390,7 +389,7 @@ int main()
 		questionEight.show();
 		questionSeven.close();
 	});
-	q7a1.caption("Man");
+	q7a1.caption(QUESTION_SEVEN_ANSWER_ONE);
 	API::effects_bground(q7a1, effects::bground_transparent(0), 0);
 	q7a1.fgcolor(colors::white);
 
@@ -398,7 +397,7 @@ int main()
 	q7a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q7a2.caption("Rus");
+	q7a2.caption(QUESTION_SEVEN_ANSWER_TWO);
 	API::effects_bground(q7a2, effects::bground_transparent(0), 0);
 	q7a2.fgcolor(colors::white);
 
@@ -406,7 +405,7 @@ int main()
 	q7a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q7a3.caption("Rus");
+	q7a3.caption(QUESTION_SEVEN_ANSWER_THREE);
 	API::effects_bground(q7a3, effects::bground_transparent(0), 0);
 	q7a3.fgcolor(colors::white);
 
@@ -414,7 +413,7 @@ int main()
 	q7a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q7a4.caption("Rus");
+	q7a4.caption(QUESTION_SEVEN_ANSWER_FOUR);
 	API::effects_bground(q7a4, effects::bground_transparent(0), 0);
 	q7a4.fgcolor(colors::white);
 
@@ -425,7 +424,7 @@ int main()
 		questionNine.show();
 		questionEight.close();
 	});
-	q8a1.caption("Man");
+	q8a1.caption(QUESTION_EIGHT_ANSWER_ONE);
 	API::effects_bground(q8a1, effects::bground_transparent(0), 0);
 	q8a1.fgcolor(colors::white);
 
@@ -433,7 +432,7 @@ int main()
 	q8a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q8a2.caption("Rus");
+	q8a2.caption(QUESTION_EIGHT_ANSWER_TWO);
 	API::effects_bground(q8a2, effects::bground_transparent(0), 0);
 	q8a2.fgcolor(colors::white);
 
@@ -441,7 +440,7 @@ int main()
 	q8a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q8a3.caption("Rus");
+	q8a3.caption(QUESTION_EIGHT_ANSWER_THREE);
 	API::effects_bground(q8a3, effects::bground_transparent(0), 0);
 	q8a3.fgcolor(colors::white);
 
@@ -449,7 +448,7 @@ int main()
 	q8a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q8a4.caption("Rus");
+	q8a4.caption(QUESTION_EIGHT_ANSWER_FOUR);
 	API::effects_bground(q8a4, effects::bground_transparent(0), 0);
 	q8a4.fgcolor(colors::white);
 
@@ -461,7 +460,7 @@ int main()
 		questionTen.show();
 		questionNine.close();
 	});
-	q9a1.caption("Man");
+	q9a1.caption(QUESTION_NINE_ANSWER_ONE);
 	API::effects_bground(q9a1, effects::bground_transparent(0), 0);
 	q9a1.fgcolor(colors::white);
 
@@ -469,7 +468,7 @@ int main()
 	q9a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q9a2.caption("Rus");
+	q9a2.caption(QUESTION_NINE_ANSWER_TWO);
 	API::effects_bground(q9a2, effects::bground_transparent(0), 0);
 	q9a2.fgcolor(colors::white);
 
@@ -477,7 +476,7 @@ int main()
 	q9a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q9a3.caption("Rus");
+	q9a3.caption(QUESTION_NINE_ANSWER_THREE);
 	API::effects_bground(q9a3, effects::bground_transparent(0), 0);
 	q9a3.fgcolor(colors::white);
 
@@ -485,7 +484,7 @@ int main()
 	q9a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q9a4.caption("Rus");
+	q9a4.caption(QUESTION_NINE_ANSWER_FOUR);
 	API::effects_bground(q9a4, effects::bground_transparent(0), 0);
 	q9a4.fgcolor(colors::white);
 
@@ -498,7 +497,7 @@ int main()
 		questionTen.close();
 		fm.close();
 	});
-	q10a1.caption("Man");
+	q10a1.caption(QUESTION_TEN_ANSWER_ONE);
 	API::effects_bground(q10a1, effects::bground_transparent(0), 0);
 	q10a1.fgcolor(colors::white);
 
@@ -506,7 +505,7 @@ int main()
 	q10a2.events().click([&wrong] {
 		wrong.show();
 	});
-	q10a2.caption("Rus");
+	q10a2.caption(QUESTION_TEN_ANSWER_TWO);
 	API::effects_bground(q10a2, effects::bground_transparent(0), 0);
 	q10a2.fgcolor(colors::white);
 
@@ -514,7 +513,7 @@ int main()
 	q10a3.events().click([&wrong] {
 		wrong.show();
 	});
-	q10a3.caption("Rus");
+	q10a3.caption(QUESTION_TEN_ANSWER_THREE);
 	API::effects_bground(q10a3, effects::bground_transparent(0), 0);
 	q10a3.fgcolor(colors::white);
 
@@ -522,7 +521,7 @@ int main()
 	q10a4.events().click([&wrong] {
 		wrong.show();
 	});
-	q10a4.caption("Rus");
+	q10a4.caption(QUESTION_TEN_ANSWER_FOUR);
 	API::effects_bground(q10a4, effects::bground_transparent(0), 0);
 	q10a4.fgcolor(colors::white);
 
@@ -530,7 +529,7 @@ int main()
 	fm.show();
 
 	//Backgrounds
-	nana::paint::image mainImg("C:\\Users\\Korisnik\\source\\repos\\QuizGame\\QuizGame\\firstpage.jpg");
+	nana::paint::image mainImg(IMG_1);
 	drawing dw(fm);
 	dw.draw([&mainImg](nana::paint::graphics & graph)
 	{
@@ -539,7 +538,7 @@ int main()
 	});
 	dw.update();
 
-	nana::paint::image Img("C:\\Users\\Korisnik\\source\\repos\\QuizGame\\QuizGame\\Question.jpg");
+	nana::paint::image Img(IMG_2);
 	drawing dw1(questionOne);
 	dw1.draw([&Img](nana::paint::graphics & graph)
 	{
