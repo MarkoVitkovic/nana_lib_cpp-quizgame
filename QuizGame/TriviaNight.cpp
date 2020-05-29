@@ -1,12 +1,16 @@
+#pragma once
 #include <nana/gui.hpp>
 #include <nana/gui/widgets/label.hpp>
 #include <nana/gui/widgets/button.hpp>
 #include <nana/gui/msgbox.hpp>
 #include <nana/gui/place.hpp>
+#include "Resource.h"
+#include <nana/audio/player.hpp>
 
 
 int main()
 {
+
 	using namespace nana;
 	//Define a forms.
 	form fm;
@@ -44,19 +48,18 @@ int main()
 	nana::API::track_window_size(questionNine, { 700,450 }, true); //maximum
 	nana::API::track_window_size(questionTen, { 700,450 }, false); //minimum
 	nana::API::track_window_size(questionTen, { 700,450 }, true); //maximum
-	fm.caption("Trivia Night");
-	questionOne.caption("Trivia Night");
-	questionTwo.caption("Trivia Night");
-	questionThree.caption("Trivia Night");
-	questionFour.caption("Trivia Night");
-	questionFive.caption("Trivia Night");
-	questionSix.caption("Trivia Night");
-	questionSeven.caption("Trivia Night");
-	questionEight.caption("Trivia Night");
-	questionNine.caption("Trivia Night");
-	questionTen.caption("Trivia Night");
+	fm.caption(GAME_TITLE);
+	questionOne.caption(GAME_TITLE);
+	questionTwo.caption(GAME_TITLE);
+	questionThree.caption(GAME_TITLE);
+	questionFour.caption(GAME_TITLE);
+	questionFive.caption(GAME_TITLE);
+	questionSix.caption(GAME_TITLE);
+	questionSeven.caption(GAME_TITLE);
+	questionEight.caption(GAME_TITLE);
+	questionNine.caption(GAME_TITLE);
+	questionTen.caption(GAME_TITLE);
 
-	
 
 	//Define a label and display a text. Question One
 	label question1{ questionOne, nana::rectangle(155, 100, 400 , 100) };
@@ -64,7 +67,7 @@ int main()
 	API::effects_bground(question1, effects::bground_transparent(0), 0);
 	question1.text_align(align::center);
 	question1.format(true);
-	question1.caption("<size=25>Tko je rus, gdje je odsjeo i koja mu je domovina?</>");
+	question1.caption(QUESTION_ONE);
 	
 	//Question Two
 	label question2{ questionTwo, nana::rectangle(155, 100, 400 , 100) };
@@ -144,6 +147,10 @@ int main()
 	correct << "Correct answer, nice!";
 	nana::msgbox wrong{ "Wrong answer" };
 	wrong << "Wrong answer, try again.";
+	nana::msgbox win{ "WIN!!!!" };
+	win << "Congratulations, you WIN the game.";
+
+
 
 
 	//Define a button and answer the click event(main form).
@@ -269,6 +276,255 @@ int main()
 	API::effects_bground(q3a4, effects::bground_transparent(0), 0);
 	q3a4.fgcolor(colors::white);
 	
+	//Define a button on questionFour form
+	button q4a1{ questionFour, nana::rectangle(145, 270, 200 , 40) };
+	q4a1.events().click([&questionFive, &correct, &questionFour] {
+		correct.show();
+		questionFive.show();
+		questionFour.close();
+	});
+	q4a1.caption("Man");
+	API::effects_bground(q4a1, effects::bground_transparent(0), 0);
+	q4a1.fgcolor(colors::white);
+
+	button q4a2{ questionFour, nana::rectangle(365, 270, 200 , 40) };
+	q4a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q4a2.caption("Rus");
+	API::effects_bground(q4a2, effects::bground_transparent(0), 0);
+	q4a2.fgcolor(colors::white);
+
+	button q4a3{ questionFour, nana::rectangle(145, 330, 200 , 40) };
+	q4a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q4a3.caption("Rus");
+	API::effects_bground(q4a3, effects::bground_transparent(0), 0);
+	q4a3.fgcolor(colors::white);
+
+	button q4a4{ questionFour, nana::rectangle(365, 330, 200 , 40) };
+	q4a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q4a4.caption("Rus");
+	API::effects_bground(q4a4, effects::bground_transparent(0), 0);
+	q4a4.fgcolor(colors::white);
+
+	//Define a button on questionFive form
+	button q5a1{ questionFive, nana::rectangle(145, 270, 200 , 40) };
+	q5a1.events().click([&questionFive, &correct, &questionSix] {
+		correct.show();
+		questionSix.show();
+		questionFive.close();
+	});
+	q5a1.caption("Man");
+	API::effects_bground(q5a1, effects::bground_transparent(0), 0);
+	q5a1.fgcolor(colors::white);
+
+	button q5a2{ questionFive, nana::rectangle(365, 270, 200 , 40) };
+	q5a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q5a2.caption("Rus");
+	API::effects_bground(q5a2, effects::bground_transparent(0), 0);
+	q5a2.fgcolor(colors::white);
+
+	button q5a3{ questionFive, nana::rectangle(145, 330, 200 , 40) };
+	q5a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q5a3.caption("Rus");
+	API::effects_bground(q5a3, effects::bground_transparent(0), 0);
+	q5a3.fgcolor(colors::white);
+
+	button q5a4{ questionFive, nana::rectangle(365, 330, 200 , 40) };
+	q5a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q5a4.caption("Rus");
+	API::effects_bground(q5a4, effects::bground_transparent(0), 0);
+	q5a4.fgcolor(colors::white);
+
+
+	//Define a button on questionSix form
+	button q6a1{ questionSix, nana::rectangle(145, 270, 200 , 40) };
+	q6a1.events().click([&questionSeven, &correct, &questionSix] {
+		correct.show();
+		questionSeven.show();
+		questionSix.close();
+	});
+	q6a1.caption("Man");
+	API::effects_bground(q6a1, effects::bground_transparent(0), 0);
+	q6a1.fgcolor(colors::white);
+
+	button q6a2{ questionSix, nana::rectangle(365, 270, 200 , 40) };
+	q6a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q6a2.caption("Rus");
+	API::effects_bground(q6a2, effects::bground_transparent(0), 0);
+	q6a2.fgcolor(colors::white);
+
+	button q6a3{ questionSix, nana::rectangle(145, 330, 200 , 40) };
+	q6a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q6a3.caption("Rus");
+	API::effects_bground(q6a3, effects::bground_transparent(0), 0);
+	q6a3.fgcolor(colors::white);
+
+	button q6a4{ questionSix, nana::rectangle(365, 330, 200 , 40) };
+	q6a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q6a4.caption("Rus");
+	API::effects_bground(q6a4, effects::bground_transparent(0), 0);
+	q6a4.fgcolor(colors::white);
+
+
+	//Define a button on questionSeven form
+	button q7a1{ questionSeven, nana::rectangle(145, 270, 200 , 40) };
+	q7a1.events().click([&questionSeven, &correct, &questionEight] {
+		correct.show();
+		questionEight.show();
+		questionSeven.close();
+	});
+	q7a1.caption("Man");
+	API::effects_bground(q7a1, effects::bground_transparent(0), 0);
+	q7a1.fgcolor(colors::white);
+
+	button q7a2{ questionSeven, nana::rectangle(365, 270, 200 , 40) };
+	q7a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q7a2.caption("Rus");
+	API::effects_bground(q7a2, effects::bground_transparent(0), 0);
+	q7a2.fgcolor(colors::white);
+
+	button q7a3{ questionSeven, nana::rectangle(145, 330, 200 , 40) };
+	q7a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q7a3.caption("Rus");
+	API::effects_bground(q7a3, effects::bground_transparent(0), 0);
+	q7a3.fgcolor(colors::white);
+
+	button q7a4{ questionSeven, nana::rectangle(365, 330, 200 , 40) };
+	q7a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q7a4.caption("Rus");
+	API::effects_bground(q7a4, effects::bground_transparent(0), 0);
+	q7a4.fgcolor(colors::white);
+
+	//Define a button on questionEight form
+	button q8a1{ questionEight, nana::rectangle(145, 270, 200 , 40) };
+	q8a1.events().click([&questionEight, &correct, &questionNine] {
+		correct.show();
+		questionNine.show();
+		questionEight.close();
+	});
+	q8a1.caption("Man");
+	API::effects_bground(q8a1, effects::bground_transparent(0), 0);
+	q8a1.fgcolor(colors::white);
+
+	button q8a2{ questionEight, nana::rectangle(365, 270, 200 , 40) };
+	q8a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q8a2.caption("Rus");
+	API::effects_bground(q8a2, effects::bground_transparent(0), 0);
+	q8a2.fgcolor(colors::white);
+
+	button q8a3{ questionEight, nana::rectangle(145, 330, 200 , 40) };
+	q8a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q8a3.caption("Rus");
+	API::effects_bground(q8a3, effects::bground_transparent(0), 0);
+	q8a3.fgcolor(colors::white);
+
+	button q8a4{ questionEight, nana::rectangle(365, 330, 200 , 40) };
+	q8a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q8a4.caption("Rus");
+	API::effects_bground(q8a4, effects::bground_transparent(0), 0);
+	q8a4.fgcolor(colors::white);
+
+
+	//Define a button on questionNine form
+	button q9a1{ questionNine, nana::rectangle(145, 270, 200 , 40) };
+	q9a1.events().click([&questionNine, &correct, &questionTen] {
+		correct.show();
+		questionTen.show();
+		questionNine.close();
+	});
+	q9a1.caption("Man");
+	API::effects_bground(q9a1, effects::bground_transparent(0), 0);
+	q9a1.fgcolor(colors::white);
+
+	button q9a2{ questionNine, nana::rectangle(365, 270, 200 , 40) };
+	q9a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q9a2.caption("Rus");
+	API::effects_bground(q9a2, effects::bground_transparent(0), 0);
+	q9a2.fgcolor(colors::white);
+
+	button q9a3{ questionNine, nana::rectangle(145, 330, 200 , 40) };
+	q9a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q9a3.caption("Rus");
+	API::effects_bground(q9a3, effects::bground_transparent(0), 0);
+	q9a3.fgcolor(colors::white);
+
+	button q9a4{ questionNine, nana::rectangle(365, 330, 200 , 40) };
+	q9a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q9a4.caption("Rus");
+	API::effects_bground(q9a4, effects::bground_transparent(0), 0);
+	q9a4.fgcolor(colors::white);
+
+
+	//Define a button on questionTen form
+	button q10a1{ questionTen, nana::rectangle(145, 270, 200 , 40) };
+	q10a1.events().click([&correct, &questionTen, &win, &fm] {
+		correct.show();
+		win.show();
+		questionTen.close();
+		fm.close();
+	});
+	q10a1.caption("Man");
+	API::effects_bground(q10a1, effects::bground_transparent(0), 0);
+	q10a1.fgcolor(colors::white);
+
+	button q10a2{ questionTen, nana::rectangle(365, 270, 200 , 40) };
+	q10a2.events().click([&wrong] {
+		wrong.show();
+	});
+	q10a2.caption("Rus");
+	API::effects_bground(q10a2, effects::bground_transparent(0), 0);
+	q10a2.fgcolor(colors::white);
+
+	button q10a3{ questionTen, nana::rectangle(145, 330, 200 , 40) };
+	q10a3.events().click([&wrong] {
+		wrong.show();
+	});
+	q10a3.caption("Rus");
+	API::effects_bground(q10a3, effects::bground_transparent(0), 0);
+	q10a3.fgcolor(colors::white);
+
+	button q10a4{ questionTen, nana::rectangle(365, 330, 200 , 40) };
+	q10a4.events().click([&wrong] {
+		wrong.show();
+	});
+	q10a4.caption("Rus");
+	API::effects_bground(q10a4, effects::bground_transparent(0), 0);
+	q10a4.fgcolor(colors::white);
 
 	//Show the form
 	fm.show();
@@ -307,6 +563,62 @@ int main()
 		Img.paste(graph, nana::point{});
 	});
 	dw3.update();
+
+	drawing dw4(questionFour);
+	dw4.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw4.update();
+
+	drawing dw5(questionFive);
+	dw5.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw5.update();
+
+	drawing dw6(questionSix);
+	dw6.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw6.update();
+
+	drawing dw7(questionSeven);
+	dw7.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw7.update();
+
+	drawing dw8(questionEight);
+	dw8.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw8.update();
+
+	drawing dw9(questionNine);
+	dw9.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw9.update();
+
+	drawing dw10(questionTen);
+	dw10.draw([&Img](nana::paint::graphics & graph)
+	{
+		if (Img.empty()) return;
+		Img.paste(graph, nana::point{});
+	});
+	dw10.update();
 
 	//Start to event loop process, it blocks until the form is closed.
 	exec();
