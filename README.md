@@ -1,1 +1,1 @@
-Upute za [instalaciju](https://github.com/qPCR4vir/nana-docs/wiki/Installation)
+Upute za instalaciju [nana lib](https://github.com/qPCR4vir/nana-docs/wiki/Installation)
