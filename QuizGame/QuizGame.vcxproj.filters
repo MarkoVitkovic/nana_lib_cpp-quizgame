@@ -18,9 +18,15 @@
     <ClInclude Include="Resource.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="Form.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TriviaNight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Form.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
