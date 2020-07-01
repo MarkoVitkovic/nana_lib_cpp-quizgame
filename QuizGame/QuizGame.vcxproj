@@ -115,11 +115,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Form.cpp" />
     <ClCompile Include="TriviaNight.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Form.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,8 +5,11 @@
 #include <nana/gui/msgbox.hpp>
 #include <nana/gui/place.hpp>
 #include "Resource.h"
+#include <stack>
+
 
 using namespace nana;
+
 class forms {
 private:
 
@@ -16,6 +19,8 @@ private:
 	static constexpr bool set_max_size = true;
 	form fm;
 	form que;
+	std::stack<std::string> question;
+	std::stack<std::string> answers;
 
 public:
 	
@@ -30,25 +35,59 @@ public:
 		fm.caption(GAME_TITLE);
 		que.caption(GAME_TITLE);
 	}
+	void StackPush()
+	{
+		question.push(QUESTION_ONE);
+		question.push(QUESTION_TWO);
+		question.push(QUESTION_THREE);
+		question.push(QUESTION_FOUR);
+		question.push(QUESTION_FIVE);
+		question.push(QUESTION_SIX);
+		question.push(QUESTION_SEVEN);
+		question.push(QUESTION_EIGHT);
+		question.push(QUESTION_NINE);
+		question.push(QUESTION_TEN);
+		answers.push(ANSWER_ONE);
+		answers.push(ANSWER_TWO);
+		answers.push(ANSWER_THREE);
+		answers.push(ANSWER_FOUR);
+		answers.push(ANSWER_FIVE);
+		answers.push(ANSWER_SIX);
+		answers.push(ANSWER_SEVEN);
+		answers.push(ANSWER_EIGHT);
+		answers.push(ANSWER_NINE);
+		answers.push(ANSWER_TEN);
+	}
 	void Start()
 	{
+		std::string a;
 		//buttons for forms
 		button start{ fm, nana::rectangle(130, 270, 100 , 30) };
 		button quit{ fm, nana::rectangle(280, 270, 100, 30) };
 		button check{ que, nana::rectangle(300, 350, 100, 30) };
 		start.caption(START); 
 		quit.caption(QUIT);
+		check.caption(CHECH);
 		API::effects_bground(start, effects::bground_transparent(0), 0);
 		API::effects_bground(quit, effects::bground_transparent(0), 0);
+		API::effects_bground(check, effects::bground_transparent(0), 0);
 		start.fgcolor(colors::white);
 		quit.fgcolor(colors::white);
+		check.fgcolor(colors::white);
 		
 		//label
-		label question1{ que, nana::rectangle(300, 100, 400 , 100) };
-		question1.caption(QUESTION_ONE);
+		label question1{ que, nana::rectangle(155, 100, 400 , 100) };
+		question1.fgcolor(colors::white);
+		API::effects_bground(question1, effects::bground_transparent(0), 0);
+		question1.text_align(align::center);
+		question1.format(true);
+
 
 		//input box
-		textbox tb(que, nana::rectangle{ 200, 300 ,300,30 });		
+		textbox tb(que, nana::rectangle{ 200, 300 ,300,30 });
+		API::effects_bground(tb, effects::bground_transparent(0), 0);
+		tb.fgcolor(colors::white);
+		tb.text_align(align::center);
 
 		//Background
 		nana::paint::image mainImg(IMG_1);
@@ -76,20 +115,24 @@ public:
 		start.events().click([this] {
 			que.show();
 		});
-		check.events().click([&question1, &tb, &check] {
-			for (int i = 0; i < 10; i++) {
-				if (tb.text() == QUESTION_EIGHT_ANSWER_FOUR) {
-					question1.caption(QUESTION_EIGHT);
-					tb.reset();
-				}
-				else {
-					question1.caption(QUESTION_EIGHT_ANSWER_FOUR);
-					check.enabled(false);
-				}
-				tb.clear_undo();
+		a = question.top();
+		question.pop();
+		question1.caption(a);
+		check.events().click([&question1, &tb, &check, &a, this] {
+			if (tb.text() == answers.top()) {
+				a = question.top();
+				question.pop();
+				question1.caption(a);
+				answers.pop();
 			}
-			
+			else {
+				question1.caption(a);
+			}
+			if (question.empty()) {
+				API::exit_all();
+			}
 		});
+		
 		fm.show();
 		exec();
 	}
@@ -98,5 +141,6 @@ public:
 int main()
 {
 	forms comp;
+	comp.StackPush();
 	comp.Start();
 }
