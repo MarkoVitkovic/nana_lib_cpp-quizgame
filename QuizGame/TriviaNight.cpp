@@ -37,6 +37,7 @@ public:
 	}
 	void StackPush()
 	{
+		question.push(EMPTY);
 		question.push(QUESTION_ONE);
 		question.push(QUESTION_TWO);
 		question.push(QUESTION_THREE);
@@ -89,6 +90,14 @@ public:
 		tb.fgcolor(colors::white);
 		tb.text_align(align::center);
 
+		//msgbox
+		msgbox correct{ MSGBOX_CORRECT_TITLE };
+		msgbox wrong{ MSGBOX_WRONG_TITLE };
+		msgbox win{ MSGBOX_WIN_TITLE };
+		correct << MSGBOX_CORRECT;
+		wrong << MSGBOX_WRONG;
+		win << MSGBOX_WIN;
+
 		//Background
 		nana::paint::image mainImg(IMG_1);
 		nana::paint::image secImg(IMG_2);
@@ -118,18 +127,34 @@ public:
 		a = question.top();
 		question.pop();
 		question1.caption(a);
-		check.events().click([&question1, &tb, &check, &a, this] {
+		check.events().click([&question1, &tb, &check, &a, correct, wrong, win, this] {
+			check.enabled(false);
 			if (tb.text() == answers.top()) {
+				if (correct.show() == msgbox::pick_ok || msgbox::pick_cancel) 
+				{
+					check.enabled(true);
+					tb.reset("");
+				}
 				a = question.top();
 				question.pop();
 				question1.caption(a);
 				answers.pop();
 			}
 			else {
+				if (wrong.show() == msgbox::pick_ok || msgbox::pick_cancel)
+				{
+					check.enabled(true);
+					tb.reset("");
+				}
 				question1.caption(a);
 			}
 			if (question.empty()) {
-				API::exit_all();
+				if (win.show() == msgbox::pick_ok || msgbox::pick_cancel)
+				{
+					check.enabled(true);
+					tb.reset("");
+					API::exit_all();
+				}
 			}
 		});
 		
