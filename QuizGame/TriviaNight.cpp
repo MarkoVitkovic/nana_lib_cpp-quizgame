@@ -37,7 +37,7 @@ public:
 	}
 	void StackPush()
 	{
-		question.push(EMPTY);
+		question.push(WINNER);
 		question.push(QUESTION_ONE);
 		question.push(QUESTION_TWO);
 		question.push(QUESTION_THREE);

@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#define GAME_TITLE "Trivia Night"
+#define GAME_TITLE		"Trivia Night"
 
-#define START	 "Start"
-#define QUIT	 "Quit"
-#define CHECH	 "Check"
+#define START			"Start"
+#define QUIT			"Quit"
+#define CHECH			"Check"
 
 #define MSGBOX_CORRECT_TITLE	"Correct answer"
 #define MSGBOX_WRONG_TITLE		"Wrong answer"
@@ -27,7 +27,7 @@
 #define QUESTION_EIGHT	"<size=25>How many planets are in solar system?</>"
 #define QUESTION_NINE	"<size=25>Who is known as the king of rock'n roll?</>"
 #define QUESTION_TEN	"<size=25>Who invented the first computer?</>"
-#define EMPTY			" "
+#define WINNER			"WINNER!!!!!!!!!!!"
 
 //Answers
 #define ANSWER_ONE		"Iceland"
@@ -44,5 +44,5 @@
 
 
 //Images
-#define IMG_1 "images\\firstpage.jpg"
-#define IMG_2 "images\\Question.jpg"
+#define IMG_1			"images\\firstpage.jpg"
+#define IMG_2			"images\\Question.jpg"
