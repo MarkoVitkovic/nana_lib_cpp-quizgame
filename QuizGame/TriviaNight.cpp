@@ -123,18 +123,17 @@ public:
 		});
 		start.events().click([this] {
 			que.show();
+			fm.close();
 		});
 		a = question.top();
 		question.pop();
 		question1.caption(a);
 		check.events().click([&question1, &tb, &check, &a, correct, wrong, win, this] {
-			check.enabled(false);
-			tb.enabled(false);
+			que.enabled(false);
 			if (tb.text() == answers.top()) {
 				if (correct.show() == msgbox::pick_ok || msgbox::pick_cancel) 
 				{
-					check.enabled(true);
-					tb.enabled(true);
+					que.enabled(true);
 					tb.reset("");
 				}
 				a = question.top();
@@ -145,8 +144,7 @@ public:
 			else {
 				if (wrong.show() == msgbox::pick_ok || msgbox::pick_cancel)
 				{
-					check.enabled(true);
-					tb.enabled(true);
+					que.enabled(true);
 					tb.reset("");
 				}
 				question1.caption(a);
@@ -154,8 +152,7 @@ public:
 			if (question.empty()) {
 				if (win.show() == msgbox::pick_ok || msgbox::pick_cancel)
 				{
-					check.enabled(true);
-					tb.enabled(true);
+					que.enabled(true);
 					tb.reset("");
 					API::exit_all();
 				}
@@ -165,11 +162,11 @@ public:
 		tb.events().key_char([&](const nana::arg_keyboard& _arg) {
 			if (keyboard::enter == _arg.key)
 			{
-				check.enabled(false);
+				que.enabled(false);
 				if (tb.text() == answers.top()) {
 					if (correct.show() == msgbox::pick_ok || msgbox::pick_cancel)
 					{
-						check.enabled(true);
+						que.enabled(true);
 						tb.reset("");
 					}
 					a = question.top();
@@ -180,7 +177,7 @@ public:
 				else {
 					if (wrong.show() == msgbox::pick_ok || msgbox::pick_cancel)
 					{
-						check.enabled(true);
+						que.enabled(true);
 						tb.reset("");
 					}
 					question1.caption(a);
@@ -188,7 +185,7 @@ public:
 				if (question.empty()) {
 					if (win.show() == msgbox::pick_ok || msgbox::pick_cancel)
 					{
-						check.enabled(true);
+						que.enabled(true);
 						tb.reset("");
 						API::exit_all();
 					}
