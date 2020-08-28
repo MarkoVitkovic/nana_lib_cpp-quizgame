@@ -12,7 +12,7 @@
 
 #define MSGBOX_CORRECT	"Correct answer, nice!"
 #define MSGBOX_WRONG	"Wrong answer, try again."
-#define MSGBOX_WIN		"Congratulations, you WIN the game."
+#define MSGBOX_WIN		"Congratulations, you WIN the game. Game will be closed."
 
 
 

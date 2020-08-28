@@ -183,6 +183,7 @@ public:
 					question1.caption(a);
 				}
 				if (question.empty()) {
+					que.enabled(false);
 					if (win.show() == msgbox::pick_ok || msgbox::pick_cancel)
 					{
 						que.enabled(true);
